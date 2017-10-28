@@ -1,0 +1,15 @@
+{
+  "name": "fmn",
+  "version": "1.0.0",
+  "description": "For use with Forget Me Not",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Kiet Tran",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.9",
+    "progressbar.js": "^1.0.1"
+  }
+}
