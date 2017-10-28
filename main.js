@@ -18,8 +18,8 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
-    frame: false                         //make it frameless
+    height: 600
+    //frame: false                         //make it frameless
 
     //fullscreen: true,              //show window in full screen
   })

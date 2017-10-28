@@ -11,15 +11,25 @@
 <body>
   <div id="grid_wrapper">
     <div class="zero"><h1>Forget Me Not</h1></div>
-    <div id="side-nav"></div>
+    <div class="side-nav">
+      <div id="profile_pic"></div>
+      <div id="plant_info">
+        <p>Plant:</p>
+        <p id="plant_info_description">Plant Description: </p>
+      </div>
+      <div id="close-btn">CLOSE</div>
+    </div>
     <div class="display_graph one">Graph goes here.</div>
     <div id="container" class="emotion_state two"></div>
-    <div id="slider_control" class="three">
+    <div class="three">
+      <div id="ele1">Graph</div>
+      <div id="ele2">Happiness State</div>
+    </div>
+    <div id="slider_control" class="four">
         <input type='range' min= '0' max='100' value='50' class='slider' id='range_selector'>
     </div>
   </div>
-  <sidenav></sidenav>
-  <span id="close-btn">CLOSE</span>
+
 </body>
 <script>
 console.log("Hello I'm in GAUGE JS");
@@ -43,7 +53,7 @@ var bar = new ProgressBar.Circle( my_container, {
     autoStyleContainer: false
   },
   from: { color: '#a04bd8', width: 1 },
-  to: { color: '#54f79a', width: 20 },
+  to: { color: '#4B79A1', width: 20 },
   // Set default step function for all animate calls
   step: function(state, circle) {
     circle.path.setAttribute('stroke', state.color);
