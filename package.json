@@ -9,6 +9,7 @@
   "author": "Kiet Tran",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^2.7.1",
     "electron": "^1.7.9",
     "progressbar.js": "^1.0.1"
   }
