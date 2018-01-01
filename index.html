@@ -1,118 +1,130 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="main.js"></script>
-    <script src="gauge.js"></script>
-    <link rel="stylesheet" href="main.css">
-    <!--GOOGLE FONT-->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-  </head>
+
+<head>
+  <script src="main.js"></script>
+  <script src="gauge.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <!--GOOGLE FONT-->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+</head>
+
 <body>
   <div id="grid_wrapper">
-    <div class="zero"><h1>Forget Me Not</h1></div>
+    <div class="zero">
+      <h1>Forget Me Not</h1></div>
     <div id="side-nav"></div>
     <div class="chart-container">Graph goes here.
-    <canvas id="plantChart" width="400" height="400"></canvas>
+      <canvas id="plantChart" width="400" height="400"></canvas>
     </div>
     <div id="container" class="emotion_state two"></div>
     <div id="slider_control" class="three">
-        <input type='range' min= '0' max='100' value='50' class='slider' id='range_selector'>
+      <input type='range' min='0' max='100' value='50' class='slider' id='range_selector'>
     </div>
   </div>
   <sidenav></sidenav>
   <span id="close-btn">CLOSE</span>
 </body>
 <script>
-console.log("Hello I'm in GAUGE JS");
-//CLOSE WINDOWS WITH CLOSE BTN
-document.getElementById('close-btn').addEventListener("click",function(e){
-  var window = remote.getCurrentWindow();
-  window.close(); //close current open window
-});
-var my_container = document.getElementById('container');
+  require('./gauge.js');
 
-//TESTING PROGRESSBAR LIBRARY
-var bar = new ProgressBar.Circle( my_container, {
-  //color: '#000',
-  // This has to be the same size as the maximum width to
-  // prevent clipping
-  strokeWidth: 20,
-  trailWidth: 5,
-  easing: 'easeInOut',
-  duration: 2000,
-  text: {
-    autoStyleContainer: false
-  },
-  from: { color: '#a04bd8', width: 1 },
-  to: { color: '#54f79a', width: 20 },
-  // Set default step function for all animate calls
-  step: function(state, circle) {
-    circle.path.setAttribute('stroke', state.color);
-    circle.path.setAttribute('stroke-width', state.width);
+</script>
 
-    var value = Math.round(circle.value() * 100);
-    if (value === 0) {
-      circle.setText('');
-    } else {
-      circle.setText(value + "%");
-    }
+<script>
+  console.log("Hello I'm in GAUGE JS");
+  //CLOSE WINDOWS WITH CLOSE BTN
+  document.getElementById('close-btn').addEventListener("click", function(e) {
+    var window = remote.getCurrentWindow();
+    window.close(); //close current open window
+  });
+  var my_container = document.getElementById('container');
 
-  }
-});
+  //TESTING PROGRESSBAR LIBRARY
+  var bar = new ProgressBar.Circle(my_container, {
+    //color: '#000',
+    // This has to be the same size as the maximum width to
+    // prevent clipping
+    strokeWidth: 20,
+    trailWidth: 5,
+    easing: 'easeInOut',
+    duration: 2000,
+    text: {
+      autoStyleContainer: false
+    },
+    from: {
+      color: '#a04bd8',
+      width: 1
+    },
+    to: {
+      color: '#54f79a',
+      width: 20
+    },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+      circle.path.setAttribute('stroke', state.color);
+      circle.path.setAttribute('stroke-width', state.width);
 
-
-bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-bar.text.style.fontSize = '2rem';
-
-//SCRIPT TO HANDLE SLIDER CONTROL
-var slider_control = document.getElementById('range_selector');
-slider_control.oninput = function(){
-  bar.animate(this.value/100); //change the circular gage as we change the values
-}
-//bar.animate(0.8);  // Number from 0.0 to 1.0
-
-//Chart.js graph
-var Chart = require('chart.js');
-var ctx = "plantChart";
-
-var plantChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: ["Oct 27", "Oct 28", "Oct 29"],
-  datasets: [{
-    label: 'Date',
-    data: [5, 25, 15],
-    backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-  }]
-},
-options: {
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero: true
+      var value = Math.round(circle.value() * 100);
+      if (value === 0) {
+        circle.setText('');
+      } else {
+        circle.setText(value + "%");
       }
-    }]
-  }
-}
-});
 
+    }
+  });
+
+
+  bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+  bar.text.style.fontSize = '2rem';
+
+  //SCRIPT TO HANDLE SLIDER CONTROL
+  var slider_control = document.getElementById('range_selector');
+  slider_control.oninput = function() {
+    bar.animate(this.value / 100); //change the circular gage as we change the values
+  }
+  //bar.animate(0.8);  // Number from 0.0 to 1.0
+
+  //Chart.js graph
+  var Chart = require('chart.js');
+  var ctx = "plantChart";
+
+  var plantChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Oct 27", "Oct 28", "Oct 29"],
+      datasets: [{
+        label: 'Date',
+        data: [5, 25, 15],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 </script>
 
 </html>
