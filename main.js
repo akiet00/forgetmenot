@@ -1,6 +1,5 @@
 const electron = require('electron');
 const ProgressBar = require('progressbar.js');
-const remote = require('electron').remote;
 
 // Module to control application life.
 const app = electron.app
@@ -19,9 +18,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false                         //make it frameless
-
-    //fullscreen: true,              //show window in full screen
+    frame: true           //False = Framless
+    //fullscreen: true,   //True  = Open window in full screen
   })
 
   // and load the index.html of the app.
