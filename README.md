@@ -10,7 +10,8 @@ After 8 hours of hard work, we almost finished making the project come to live. 
 ![Forget Me Not Illustration](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/558/698/datas/gallery.jpg)
 
 ## Going forward
-We currently don't have any plan to develop Forget Me Not any further.
+We currently don't have any plan to develop Forget Me Not any further. However, we would like to update the GUI to a better one with the below design as one potential.
+![Mockup of new GUI app](resources/mockup.svg)
 
 ## More information
 If you would like to know more about what we did and our progress throughout the projects. Please take a look [here](https://devpost.com/software/forget-me-not-plant-watering-device#updates)
